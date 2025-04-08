@@ -1,0 +1,55 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: AsyncExample(),
+    );
+  }
+}
+
+class AsyncExample extends StatefulWidget {
+  @override
+  _AsyncExampleState createState() => _AsyncExampleState();
+}
+
+class _AsyncExampleState extends State<AsyncExample> {
+  String _data = "ລໍຖ້າຂໍ້ມູນ...";
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  Future<void> loadData() async {
+    String data = await fetchData();
+    setState(() {
+      _data = data;
+    });
+  }
+
+  Future<String> fetchData() {
+    // ຈຳລອງເວລາດຶງຂໍ້ມູນ
+    return Future.delayed(Duration(seconds: 3), () {
+      return "ຂໍ້ມູນຖືກດຶງມາແລ້ວ!";
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Async/Await Example")),
+      body: Center(
+        child: Text(
+          _data,
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}

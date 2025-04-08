@@ -1,0 +1,20 @@
+class QuoteCard extends StatelessWidget {
+  final String quote;
+  final Function onDelete;
+
+  QuoteCard({required this.quote, required this.onDelete});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(10),
+      child: ListTile(
+        title: Text(quote),
+        trailing: IconButton(
+          icon: Icon(Icons.delete),
+          onPressed: () => onDelete(), // ເມື່ອກົດຈະເຮັດການລົບ
+        ),
+      ),
+    );
+  }
+}

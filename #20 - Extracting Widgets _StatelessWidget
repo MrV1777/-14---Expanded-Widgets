@@ -1,0 +1,27 @@
+// quote_card.dart
+import 'package:flutter/material.dart';
+
+class QuoteCard extends StatelessWidget {
+  final String text;
+  final String author;
+
+  QuoteCard({required this.text, required this.author});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(12),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(text, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            SizedBox(height: 6),
+            Text('- $author', style: TextStyle(color: Colors.grey[600])),
+          ],
+        ),
+      ),
+    );
+  }
+}
